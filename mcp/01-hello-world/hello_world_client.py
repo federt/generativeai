@@ -2,10 +2,10 @@ import asyncio
 from fastmcp import Client
 
 async def main():
-    async with Client("hello_world.py") as client:
+    async with Client("https://fiscal-bronze-tuna.fastmcp.app/mcp") as client:
         result = await client.call_tool(
             name="say_hello", 
-            arguments={"name": "Homer"}
+            arguments={"name": "Pepito"}
         )
     print(result)
 
