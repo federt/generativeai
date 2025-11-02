@@ -1,0 +1,22 @@
+services:
+  hello-mcp-server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: hello_mcp_server
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  hello-mcp-client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: hello_mcp_client
+    environment:
+      - MCP_URL=http://hello-mcp-server:8000/mcp
+    command: ["python", "hello_world_client.py"]
+    depends_on:
+      hello-mcp-server:
+        condition: service_started
+    restart: "no"
