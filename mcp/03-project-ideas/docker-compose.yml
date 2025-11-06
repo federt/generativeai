@@ -1,0 +1,25 @@
+services:
+  ideas-mcp-server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: ideas_mcp_server
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  ideas-mcp-client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: ideas_mcp_client
+    env_file:
+      - .env
+    environment:
+      - MCP_URL=${MCP_URL}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    command: ["python", "client.py"]
+    depends_on:
+      ideas-mcp-server:
+        condition: service_started
+    restart: "no"
