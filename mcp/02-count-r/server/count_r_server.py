@@ -1,3 +1,14 @@
+"""
+MCP Server: Count R
+-----------------------------------------
+This MCP server allows counting occurrences of the letter 'R'.
+It exposes:
+ - Tools: count_r
+Typical usage:
+An MCP agent can call the `count_r` tool to get the number of times
+the letter 'R' appears in a given text. 
+"""
+
 import os
 from fastmcp import FastMCP
 
