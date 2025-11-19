@@ -19,6 +19,7 @@ services:
       - MCP_URL=${MCP_URL}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - FASTMCP_API_KEY=${FASTMCP_API_KEY}
+      - HF_API_TOKEN=${HUGGINGFACE_API_KEY}
     command: ["python", "count_r_client.py"]
     depends_on:
       count-mcp-server:
